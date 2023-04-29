@@ -19,7 +19,11 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, ge
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
+
+# Setup the Flask-JWT-Extended extension
+app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET')  # I created this!
 jwt = JWTManager(app)
+
 app.url_map.strict_slashes = False
 
 # database condiguration
