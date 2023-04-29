@@ -13,7 +13,7 @@ from api.admin import setup_admin
 from api.commands import setup_commands
 #Para usar JWT
 import datetime # necesito saber el tiempo que dura el token
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")
