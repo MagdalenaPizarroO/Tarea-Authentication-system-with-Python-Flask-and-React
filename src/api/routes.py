@@ -31,3 +31,12 @@ def create_token():
         return jsonify({"msg": "Bad username or password"}), 401
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+@api.route('/private', methods=['GET'])
+@jwt_required()
+def private_message():
+    email = get_jwt_identity()
+    private = {
+        "message": "Only signed-in users can see this message 👀"
+    }
+    return jsonify(private)
