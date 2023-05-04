@@ -18,6 +18,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
+			signup: async (email, password) => {
+				const opts = {
+					method: 'POST',
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						"email": email,
+						"password": password
+					})
+				};
+			try {
+				const resp = await fetch('https://magdalenapizarroo-congenial-waddle-pvqw74jrqpx3794j-3001.preview.app.github.dev/api/signup', opts)
+				if (resp.status != 200) {
+					alert("There has been some error");
+					return false;
+				}
+				const data = await resp.json();
+				sessionStorage.setItem("token", data.access_token);
+				setStore({token: data.access_token});
+				return true
+			}
+			catch(error) {
+				console.error("There has been an error signing up", error)
+			}
+			},
 			syncTokenFromSessionStore: () => {
 				const token = sessionStorage.getItem("token");
 				if (token && token != "" && token != undefined) setStore({ token: token })

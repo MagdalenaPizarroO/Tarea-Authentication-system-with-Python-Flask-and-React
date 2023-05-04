@@ -16,7 +16,7 @@ export const Home = () => {
 			<p>
 				<img src={rigoImageUrl} />
 			</p>
-			<div className="alert alert-info">{store.message || "If you don't log in, you won't see the secret message 👀"}</div>
+			<div className="alert alert-info">{store.message || "You must be logged-in to see the secret message 👀"}</div>
 			<p>
 				This boilerplate comes with lots of documentation:{" "}
 				<a href="https://start.4geeksacademy.com/starters/react-flask">
